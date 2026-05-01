@@ -1,34 +1,38 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import SwiftUI
 
 private struct ThemeKey: EnvironmentKey {
-    static let defaultValue: AppTheme = LightTheme()
+  static let defaultValue: AppTheme = LightTheme()
 }
 
 extension EnvironmentValues {
-    public var appTheme: AppTheme {
-        get { self[ThemeKey.self] }
-        set { self[ThemeKey.self] = newValue }
-    }
+  public var appTheme: AppTheme {
+    get { self[ThemeKey.self] }
+    set { self[ThemeKey.self] = newValue }
+  }
 }
 
 extension View {
-    public func withTheme(_ theme: AppTheme) -> some View {
-        self.environment(\.appTheme, theme)
-            .background(theme.background)
-            .foregroundColor(theme.text)
-    }
-    
-    public func applyTheme() -> some View {
-        modifier(ThemeModifier())
-    }
+  public func withTheme(_ theme: AppTheme) -> some View {
+    self.environment(\.appTheme, theme)
+      .background(theme.background)
+      .foregroundColor(theme.text)
+  }
+  
+  public func applyTheme() -> some View {
+    modifier(ThemeModifier())
+  }
 }
 
 private struct ThemeModifier: ViewModifier {
-    @Environment(\.appTheme) var theme
-    
-    func body(content: Content) -> some View {
-        content
-            .background(theme.background)
-            .foregroundColor(theme.text)
-    }
+  @Environment(\.appTheme) var theme
+  
+  func body(content: Content) -> some View {
+    content
+      .background(theme.background)
+      .foregroundColor(theme.text)
+  }
 }

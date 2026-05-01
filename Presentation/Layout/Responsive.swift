@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import SwiftUI
 
 public enum DeviceType {
@@ -21,16 +25,16 @@ public struct ResponsiveLayout {
 }
 
 public struct ResponsiveView<Content: View>: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    
-    let content: (UserInterfaceSizeClass?, UserInterfaceSizeClass?) -> Content
-    
-    public init(@ViewBuilder content: @escaping (UserInterfaceSizeClass?, UserInterfaceSizeClass?) -> Content) {
-        self.content = content
-    }
-    
-    public var body: some View {
-        content(horizontalSizeClass, verticalSizeClass)
-    }
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  
+  let content: (UserInterfaceSizeClass?, UserInterfaceSizeClass?) -> Content
+  
+  public init(@ViewBuilder content: @escaping (UserInterfaceSizeClass?, UserInterfaceSizeClass?) -> Content) {
+    self.content = content
+  }
+  
+  public var body: some View {
+    content(horizontalSizeClass, verticalSizeClass)
+  }
 }

@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import SwiftUI
 
 public enum DSColors {
@@ -15,7 +19,7 @@ public enum DSColors {
     public static let gray800 = Color(white: 0.2)
     public static let gray900 = Color(white: 0.1)
   }
-
+  
   // MARK: - Semantic Colors (Defaults)
   public static let primary = Core.blue500
   public static let secondary = Core.purple500

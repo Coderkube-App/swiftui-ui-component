@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import UIKit
 
 public enum AppIcon: String, CaseIterable {

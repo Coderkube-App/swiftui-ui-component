@@ -25,7 +25,6 @@
 		521442AE0EF56E0501AA5E3A /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B76836975B6A5A9880F7AE /* AppTheme.swift */; };
 		52A1D740323D89D45759CBBE /* DSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2229A9ABD34DC98038A71 /* DSButton.swift */; };
 		5CC02CA2DCC77AC3482775E9 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD06C1F05B8DE88DF1CF22CC /* ThemeManager.swift */; };
-		79B12CB9FC07E568F9B54DC6 /* DesignSystem_README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A5865C42AED637A9E63F2AC /* DesignSystem_README.md */; };
 		A1BE94AE6AA36DB5F7706A31 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91E628DDE1706318B19BD1 /* AppEntry.swift */; };
 		B19B897BC172EEFCBB5CFC8B /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B14A9D656A329857CC5F38D /* AppIcon.png */; };
 		B4F901611B8B8966E5AE37FC /* DSCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C0799053FD9926BE35E57 /* DSCard.swift */; };
@@ -49,7 +48,6 @@
 		2B14A9D656A329857CC5F38D /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		2F91E628DDE1706318B19BD1 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		35710C9E7FBC7B713F32AE78 /* DSNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSNavBar.swift; sourceTree = "<group>"; };
-		3A5865C42AED637A9E63F2AC /* DesignSystem_README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DesignSystem_README.md; sourceTree = "<group>"; };
 		3D779F774D03C9F37D4AA53C /* DSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTextField.swift; sourceTree = "<group>"; };
 		44234488788F50A5605379EE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4E2BF5FF44C9498AA704D87B /* DesignSystemDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DesignSystemDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 		1288364F4462A8E864098210 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3A5865C42AED637A9E63F2AC /* DesignSystem_README.md */,
 				4475B0D6FB055990D916BB1A /* Components */,
 				A0232DE5E4D998C93B73AFB1 /* Layout */,
 				89ACD1CEBC3426543005F146 /* Navigation */,
@@ -300,8 +297,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 3AC7EAFBF448007C493579CE /* Build configuration list for PBXProject "SwiftUI-DesignSystem" */;
 			developmentRegion = en;
@@ -330,7 +325,6 @@
 				12954F4DE103034AAA7BF32D /* AppIcon-Dark.png in Resources */,
 				FB9ED7756361E212B001878E /* AppIcon-Vibrant.png in Resources */,
 				B19B897BC172EEFCBB5CFC8B /* AppIcon.png in Resources */,
-				79B12CB9FC07E568F9B54DC6 /* DesignSystem_README.md in Resources */,
 				516DEB1D4BBC61A83E8ABDFF /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

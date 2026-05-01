@@ -1,6 +1,8 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import SwiftUI
-// Since this is in the same repo, we might need to import DesignSystem if it's a separate target.
-// For now, I'll assume we are building the app within the same project.
 
 struct GalleryView: View {
   @EnvironmentObject var themeManager: ThemeManager
@@ -70,9 +72,9 @@ struct GalleryView: View {
               }
             }
             
-            let columns = horizontalSizeClass == .regular ? 
-              [GridItem(.flexible(), spacing: DSSpacing.lg), GridItem(.flexible(), spacing: DSSpacing.lg)] : 
-              [GridItem(.flexible())]
+            let columns = horizontalSizeClass == .regular ?
+            [GridItem(.flexible(), spacing: DSSpacing.lg), GridItem(.flexible(), spacing: DSSpacing.lg)] :
+            [GridItem(.flexible())]
             
             LazyVGrid(columns: columns, alignment: .leading, spacing: DSSpacing.lg) {
               // Controls
@@ -147,21 +149,21 @@ struct GalleryView: View {
             // Layout Showcase
             sectionHeader("Visual Components")
             HStack(spacing: DSSpacing.lg) {
-                DSGlassCard {
-                    VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                        Text("Glass Card").font(DSTypography.h3)
-                        Text("Responsive blur effect").font(DSTypography.caption)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+              DSGlassCard {
+                VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                  Text("Glass Card").font(DSTypography.h3)
+                  Text("Responsive blur effect").font(DSTypography.caption)
                 }
-                
-                DSCard(showBorder: true) {
-                    VStack(alignment: .leading, spacing: DSSpacing.sm) {
-                        Text("Bordered Card").font(DSTypography.h3)
-                        Text("Clean and minimal").font(DSTypography.caption)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
+              }
+              
+              DSCard(showBorder: true) {
+                VStack(alignment: .leading, spacing: DSSpacing.sm) {
+                  Text("Bordered Card").font(DSTypography.h3)
+                  Text("Clean and minimal").font(DSTypography.caption)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+              }
             }
           }
           .padding(horizontalSizeClass == .regular ? DSSpacing.xl : DSSpacing.md)
@@ -183,10 +185,10 @@ struct GalleryView: View {
   }
   
   private func iconColor(for icon: AppIcon) -> Color {
-      switch icon {
-      case .primary: return .blue
-      case .dark: return .black
-      case .vibrant: return .orange
-      }
+    switch icon {
+    case .primary: return .blue
+    case .dark: return .black
+    case .vibrant: return .orange
+    }
   }
 }

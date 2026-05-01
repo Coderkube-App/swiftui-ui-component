@@ -1,77 +1,96 @@
-# Clean Architecture SwiftUI Template
+# SwiftUI Design System Engine
 
-This project serves as a production-ready, portfolio-grade reference template for building iOS applications using **SwiftUI**, **Clean Architecture**, **MVVM**, and the **Coordinator Pattern** for decoupled navigation. 
+This project serves as a production-ready, portfolio-grade **Design System Engine** for building iOS applications using **SwiftUI**. It provides a scalable foundation for visual consistency, theming, and modular UI development.
 
-It heavily emphasizes code quality, modularity, and testability, making it ideal for scaling complex applications.
+It heavily emphasizes "Design Tokens First" as the source of truth, establishing a robust architecture that separates design logic from component implementation.
 
 ## Architecture Overview
 
-This project is strictly structured around Uncle Bob's Clean Architecture principles. Dependencies always point inwards toward the Domain layer, ensuring business logic remains independent of UI frameworks, databases, or external APIs.
+The system is structured into modular layers that follow a logical progression from visual primitives to complex UI layouts.
 
-### 1. Domain Layer (The Core)
-Contains the core business rules. It has absolutely **no dependencies** on other layers.
-- **Entities**: Pure business models (`User`).
-- **Use Cases**: Encapsulate specific business rules (`FetchUsersUseCase`).
-- **Repository Protocols**: Abstract interfaces defining data operations (`UserRepositoryProtocol`).
+### 1. Design Tokens (The Source of Truth)
+Contains the core visual constants that define the brand's identity.
+- **Colors**: Semantic color palettes for backgrounds, text, and accents.
+- **Typography**: Responsive font scales with Dynamic Type support.
+- **Spacing & Layout**: Standardized scales for margins, padding, and grid alignment.
+- **Radius & Shadows**: Consistent elevation and corner treatment across all components.
 
-### 2. Data Layer
-Responsible for fetching and mapping data from various sources (Network, CoreData, etc.) to Domain Entities.
-- **Data Sources**: Handle actual data fetching (`RemoteUserDataSource`).
-- **DTOs (Data Transfer Objects)**: Models representing raw JSON (`UserDTO`).
-- **Repositories**: Concrete implementations of Domain repository protocols (`UserRepositoryImpl`), mapping DTOs to Entities.
+### 2. Theming Engine
+A flexible system that handles real-time brand customization and environmental adaptations.
+- **ThemeManager**: Orchestrates theme switching (Light, Dark, OLED).
+- **AppTheme**: Defines the contract and concrete values for each theme variant.
+- **Dynamic Icons**: Supports runtime app icon switching to match brand aesthetics.
 
-### 3. Presentation Layer
-Handles the UI and View logic.
-- **Screens**: SwiftUI Views representing full pages (`UserListView`).
-- **Components**: Reusable SwiftUI UI components (`UserRowView`).
-- **ViewModels (MVVM)**: Handle UI state (`ViewState`) and format data for views without directly depending on data layers (they use Use Cases).
-- **Navigation (Coordinator)**: Decouples navigation from Views. The `AppCoordinator` uses `NavigationStack` and `NavigationPath` to drive routing, meaning views never explicitly push or present other views.
+### 3. Component Library
+A collection of reusable, atomic UI elements built using the Design Tokens.
+- **DSButton**: Highly configurable button system with support for multiple styles and states.
+- **DSTextField**: Standardized input fields with validation and focus states.
+- **DSCard & DSGlassCard**: Versatile containers for content grouping.
+- **DSLoader & DSSkeleton**: Feedback mechanisms for asynchronous operations.
 
-### 4. Dependency Injection (DI)
-- **DI Container**: Centralized factory for creating and injecting dependencies. It safely constructs the complex object graphs needed to pass Repositories into UseCases, and UseCases into ViewModels.
+### 4. Layout & Responsiveness
+Utilities for ensuring the UI adapts gracefully across different screen sizes and orientations.
+- **AdaptiveStack**: Intelligently switches between horizontal and vertical layouts based on available space.
+- **Responsive Views**: Logic for handling iPad-specific layouts and multi-orientation support.
 
 ## Folder Structure
 
 ```
-SwiftUICleanArchitectureApp/
+SwiftUI-DesignSystem/
 ├── App/                  # App Entry Point & Lifecycle
-├── Core/                 # Shared Utilities, Constants, and Extensions
-├── DI/                   # Dependency Injection Container
-├── Data/
-│   ├── Models/           # DTOs
-│   ├── Repositories/     # Concrete Repositories
-│   └── Sources/          # Remote/Local Data Sources
-├── Domain/
-│   ├── Entities/         # Core Business Models
-│   ├── Repositories/     # Repository Protocols
-│   └── UseCases/         # Business Logic Orchestration
-├── Presentation/
-│   ├── Components/       # Reusable UI Elements
-│   ├── Navigation/       # Coordinators / Routers
-│   ├── Screens/          # Full UI Screens
-│   └── ViewModels/       # View State Management
-└── project.yml           # XcodeGen configuration
+├── Assets/               # Media, xcassets, and App Icon sets
+├── Core/                 # Shared Extensions and low-level utilities
+└── Presentation/
+    ├── Tokens/           # Colors, Typography, Spacing, etc.
+    ├── Theme/            # Theming logic and ThemeManager
+    ├── Components/       # Reusable UI Elements (Buttons, Cards, etc.)
+    ├── Layout/           # Adaptive and Responsive utilities
+    ├── Navigation/       # Custom Navigation Bars and Routing
+    └── Screens/          # Gallery and Demo screens
 ```
 
-## Benefits of this Architecture
+## Benefits of this System
 
-1. **Scalability**: New features can be added in isolation without breaking existing functionality.
-2. **Testability**: Because every layer communicates via protocols, it is trivial to mock Repositories when testing UseCases, or mock UseCases when testing ViewModels.
-3. **Maintainability**: Clear separation of concerns means UI changes don't affect business logic, and API changes only require updates to the Data layer.
-4. **Reusability**: The Domain layer can be reused across different targets (e.g., an App Clip, macOS app, or Widget) without modification.
+1. **Brand Consistency**: Centralized tokens ensure that every component adheres to the same visual language.
+2. **Speed of Development**: Pre-built, tested components allow teams to focus on business logic rather than UI implementation.
+3. **Theming Flexibility**: Support for Light, Dark, and High-Contrast modes is baked into the foundation.
+4. **Maintainability**: Global design changes (e.g., changing a primary color) can be made in a single token file and propagate throughout the app.
 
 ## Setup & Usage
 
-This project utilizes [XcodeGen](https://github.com/yonaskolb/XcodeGen) to programmatically generate the `.xcodeproj` file, avoiding merge conflicts in the project file.
+This project utilizes [XcodeGen](https://github.com/yonaskolb/XcodeGen) to programmatically generate the `.xcodeproj` file.
 
-To regenerate the project:
+### Prerequisites
 1. Ensure XcodeGen is installed: `brew install xcodegen`
-2. Run `xcodegen generate` in the root directory.
-3. Open `SwiftUICleanArchitectureApp.xcodeproj`.
 
-## Sample Flow Included
-A simple **User List** flow is implemented to demonstrate the architecture:
-`UserListView` → `UserListViewModel` → `FetchUsersUseCase` → `UserRepositoryImpl` → `RemoteUserDataSource` → `URLSession`.
+### Getting Started
+1. Run `xcodegen generate` in the root directory.
+2. Open `SwiftUI-DesignSystem.xcodeproj`.
+3. Select the `DesignSystemDemo` scheme and run on a simulator.
+
+### Usage Example
+
+```swift
+// Injecting the system into your App
+@main
+struct MyApp: App {
+    @StateObject private var themeManager = ThemeManager()
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(themeManager)
+                .withTheme(themeManager.currentTheme)
+        }
+    }
+}
+
+// Using a component
+DSButton("Get Started", style: .primary) {
+    print("Action clicked")
+}
+```
 
 ## License 
 This project is licensed under the Apache-2.0 License.
+

@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2026 Coderkube Technologies - SwiftUI-DesignSystem. All rights reserved.
+//
+
 import SwiftUI
 
 public struct DSShadow {
